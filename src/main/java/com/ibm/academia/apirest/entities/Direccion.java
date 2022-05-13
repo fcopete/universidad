@@ -1,13 +1,10 @@
 package com.ibm.academia.apirest.entities;
 
 import java.io.Serializable;
-
 import javax.persistence.Embeddable;
-
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -19,7 +16,7 @@ import lombok.ToString;
 @Embeddable
 
 public class Direccion implements Serializable {
-
+	
 	private String calle;
 	private String numero;
 	private String codigoPostal;
@@ -27,7 +24,6 @@ public class Direccion implements Serializable {
 	private String piso;
 	private String localidad;
 	
-	private static final long serialVersionUID = 8500313989796186076L;
-	
+	private static final long serialVersionUID = -3282207459881860037L;
 
 }

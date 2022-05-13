@@ -10,6 +10,9 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import lombok.Getter;
@@ -34,12 +37,19 @@ public class Profesor extends Persona
 			joinColumns = @JoinColumn( name = "profesor_id"),
 			inverseJoinColumns = @JoinColumn(name = "carrera_id")
 	)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "profesores"})
+	
 	private Set<Carrera> carreras;
 	
 	public Profesor(Integer id, String nombre, String apellido, String dni, Direccion direccion, BigDecimal sueldo) {
 		super(id, nombre, apellido, dni, direccion);
 		this.sueldo = sueldo;
 
+	}
+	
+	@Override
+	public String toString() {
+		return super.toString() + "\tProfesor [sueldo=" + sueldo + "]";
 	}
 	
 	private static final long serialVersionUID = 2172111388736350832L;

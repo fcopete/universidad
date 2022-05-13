@@ -17,8 +17,13 @@ import javax.persistence.InheritanceType;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,19 +36,38 @@ import lombok.ToString;
 @Entity
 @Table(name = "personas", schema = "universidad")
 @Inheritance(strategy = InheritanceType.JOINED)
+@JsonTypeInfo(
+		use = JsonTypeInfo.Id.NAME,
+		include = JsonTypeInfo.As.PROPERTY,
+		property = "tipo"
+		)
+@JsonSubTypes({
+	@JsonSubTypes.Type(value = Alumno.class, name = "alumno"),
+	@JsonSubTypes.Type(value = Profesor.class, name = "profesor"),
+	@JsonSubTypes.Type(value = Empleado.class, name = "empleado")
+})
 
-public abstract class Persona implements Serializable{
+public class Persona implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotNull(message = "No puede ser vacio")
+	@NotEmpty(message = "No puede ser vacio")
+	@Size(min = 1, max = 80)
 	@Column(name = "nombre")
 	private String nombre;
 	
+	@NotNull(message = "No puede ser vacio")
+	@NotEmpty(message = "No puede ser vacio")
+	@Size(min = 1, max = 80)
 	@Column(name = "apellido")
 	private String apellido;
 	
+	@NotNull(message = "No puede ser vacio")
+	@NotEmpty(message = "No puede ser vacio")
+	@Size(min = 3, max = 30)
 	@Column(name = "dni", unique = true)
 	private String dni;
 	
@@ -68,7 +92,7 @@ public abstract class Persona implements Serializable{
 		this.dni = dni;
 		this.direccion = direccion;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(dni, id);
@@ -98,6 +122,8 @@ public abstract class Persona implements Serializable{
 	}
 	
 	private static final long serialVersionUID = 7435045832876635940L;
+
+	
 	
 
 }

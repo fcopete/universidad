@@ -16,9 +16,9 @@ public class Comandos implements CommandLineRunner
 	
 	@Override
 	public void run(String... args) throws Exception {
-		Carrera finanzas = new Carrera(null,"Ingenieria en Finanzas",20,3);
+		/*Carrera finanzas = new Carrera(null,"Ingenieria en Finanzas",20,3);
 		Carrera carreraGuardar = carreraDAO.guardar(finanzas);
-		System.out.println(carreraGuardar.toString());
+		System.out.println(carreraGuardar.toString());*/
 		
 	}
 
