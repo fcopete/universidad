@@ -5,7 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ibm.academia.apirest.entities.Carrera;
+import com.ibm.academia.apirest.models.entities.Carrera;
 import com.ibm.academia.apirest.repositories.CarreraRepository;
 
 @Service

@@ -5,7 +5,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ibm.academia.apirest.entities.Pabellon;
+import com.ibm.academia.apirest.models.entities.Pabellon;
 import com.ibm.academia.apirest.repositories.PabellonRepository;
 
 @Service
@@ -39,11 +39,12 @@ public class PabellonDAOImpl extends GenericoDAOImpl<Pabellon, PabellonRepositor
 			
 		Pabellon pabellonActualizado = null;
 		pabellonEncontrado.setNombre(pabellonEncontrado.getNombre());
-		pabellonEncontrado.setMetrosCuadrados(pabellonEncontrado.getMetrosCuadrados());
+		pabellonEncontrado.setTamanioMetros(pabellonEncontrado.getTamanioMetros());
 		pabellonEncontrado.setDireccion(pabellonEncontrado.getDireccion());
 		pabellonActualizado = repository.save(pabellonEncontrado);
 		return pabellonActualizado;
 		
 	}
 
+	
 }

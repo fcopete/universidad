@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.academia.apirest.enums.TipoEmpleado;
 import com.ibm.academia.apirest.exceptions.NotFoundException;
-import com.ibm.academia.apirest.entities.Carrera;
-import com.ibm.academia.apirest.entities.Pabellon;
-import com.ibm.academia.apirest.entities.Persona;
+import com.ibm.academia.apirest.models.entities.Carrera;
+import com.ibm.academia.apirest.models.entities.Pabellon;
+import com.ibm.academia.apirest.models.entities.Persona;
 import com.ibm.academia.apirest.services.AlumnoDAO;
 import com.ibm.academia.apirest.services.EmpleadoDAO;
 import com.ibm.academia.apirest.services.PabellonDAO;
@@ -75,7 +75,7 @@ public class EmpleadoController {
 	    Persona empleadoActualizado = ((EmpleadoDAO)empleadoDAO).actualizar(oEmpleado.get(), empleado);
 	    return new ResponseEntity<Persona>(empleadoActualizado, HttpStatus.OK);
 	  }
-	  
+	  /*
 	 @DeleteMapping("/empleadoId/{empleadoId}")
 	  public ResponseEntity<?> eliminarEmpleado(@PathVariable Integer empleadoId){
 	    Optional<Persona> oEmpleado = empleadoDAO.buscarPorId(empleadoId);
@@ -86,7 +86,7 @@ public class EmpleadoController {
 	    empleadoDAO.eliminarPorId(oEmpleado.get().getId()); 
 	    
 	    return new ResponseEntity<String>("Alumno ID: " + empleadoId + " se elimino satisfactoriamente",  HttpStatus.NO_CONTENT);
-	  }
+	  }*/
 	  
 	  @PutMapping("/empleadoId/{empleadoId}/pabellon/{pabellonId}")
 	  public ResponseEntity<?> asignarPabellonEmpleado(@PathVariable Integer pabellonId, @PathVariable Integer empleadoId) {

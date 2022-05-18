@@ -23,8 +23,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.academia.apirest.exceptions.BadRequestException;
-import com.ibm.academia.apirest.entities.Carrera;
-import com.ibm.academia.apirest.entities.Pabellon;
+import com.ibm.academia.apirest.models.entities.Carrera;
+import com.ibm.academia.apirest.models.entities.Pabellon;
 import com.ibm.academia.apirest.services.PabellonDAO;
 
 @RestController
@@ -32,7 +32,7 @@ import com.ibm.academia.apirest.services.PabellonDAO;
 public class PabellonController {
 	
 	@Autowired
-	private PabellonDAO pabellonDAO;
+private PabellonDAO pabellonDAO;
 	
 	@GetMapping("/lista/pabellones")
 	public List<Pabellon> buscarTodas(){

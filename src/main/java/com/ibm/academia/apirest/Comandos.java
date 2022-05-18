@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.ibm.academia.apirest.entities.Carrera;
+import com.ibm.academia.apirest.models.entities.Carrera;
 import com.ibm.academia.apirest.services.CarreraDAO;
 
 @Component

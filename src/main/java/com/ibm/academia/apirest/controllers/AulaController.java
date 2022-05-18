@@ -22,8 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.academia.apirest.exceptions.BadRequestException;
-import com.ibm.academia.apirest.entities.Aula;
-import com.ibm.academia.apirest.entities.Carrera;
+import com.ibm.academia.apirest.models.entities.Aula;
+import com.ibm.academia.apirest.models.entities.Carrera;
 import com.ibm.academia.apirest.services.AulaDAO;
 
 @RestController

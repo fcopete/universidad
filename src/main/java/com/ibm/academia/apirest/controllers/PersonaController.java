@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.academia.apirest.exceptions.NotFoundException;
-import com.ibm.academia.apirest.entities.Persona;
+import com.ibm.academia.apirest.models.entities.Persona;
 import com.ibm.academia.apirest.services.PersonaDAO;
 
 @RestController

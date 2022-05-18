@@ -23,8 +23,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ibm.academia.apirest.entities.Carrera;
 import com.ibm.academia.apirest.exceptions.BadRequestException;
+import com.ibm.academia.apirest.mapper.CarreraMapper;
+import com.ibm.academia.apirest.models.dto.CarreraDTO;
+import com.ibm.academia.apirest.models.entities.Carrera;
 import com.ibm.academia.apirest.services.CarreraDAO;
 
 @RestController
@@ -89,7 +91,7 @@ public class CarreraController
 	    return new ResponseEntity<Carrera>(carreraActualizada, HttpStatus.OK); 
 	  }
 	
-	/*
+	
 	@DeleteMapping("/carreraId/{carreraId}")
 	  public ResponseEntity<?> eliminarCarrera(@PathVariable Integer carreraId){
 	    Map<String, Object> respuesta = new HashMap<String, Object>();
@@ -97,7 +99,7 @@ public class CarreraController
 	    Optional<Carrera> carrera = carreraDAO.buscarPorId(carreraId);
 	    
 	    if(!carrera.isPresent())
-	      throw new com.ibm.academia.apirest.exceptions.handler.NotFoundException(String.format("La carrera con ID: %d no existe", carreraId));
+	      throw new com.ibm.academia.apirest.exceptions.NotFoundException(String.format("La carrera con ID: %d no existe", carreraId));
 	    
 	    carreraDAO.eliminarPorId(carreraId);
 	    respuesta.put("OK", "Carrera ID: " + carreraId + " eliminada exitosamente");
@@ -110,7 +112,7 @@ public class CarreraController
 		 List<Carrera> carreras = (List<Carrera>) carreraDAO.buscarTodos();
 		 
 		 if(carreras.isEmpty())
-			 throw new com.ibm.academia.apirest.exceptions.handler.NotFoundException("No existen carreras en la base de datos.");
+			 throw new com.ibm.academia.apirest.exceptions.NotFoundException("No existen carreras en la base de datos.");
 		  
 		 List<CarreraDTO> listaCarreras = carreras
 				 .stream()
@@ -118,6 +120,6 @@ public class CarreraController
 				 .collect(Collectors.toList());
 		 
 		 return new ResponseEntity<List<CarreraDTO>>(listaCarreras, HttpStatus.OK);
-	 }*/
+	 }
 	
 }

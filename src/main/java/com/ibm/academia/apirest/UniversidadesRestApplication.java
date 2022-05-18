@@ -6,9 +6,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.ibm.academia.apirest.entities.Alumno;
-import com.ibm.academia.apirest.entities.Direccion;
-import com.ibm.academia.apirest.entities.Persona;
+import com.ibm.academia.apirest.models.entities.Alumno;
+import com.ibm.academia.apirest.models.entities.Direccion;
+import com.ibm.academia.apirest.models.entities.Persona;
 import com.ibm.academia.apirest.services.AlumnoDAO;
 
 @SpringBootApplication

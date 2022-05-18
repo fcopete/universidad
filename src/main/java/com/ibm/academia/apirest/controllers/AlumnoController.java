@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.academia.apirest.exceptions.NotFoundException;
-import com.ibm.academia.apirest.entities.Carrera;
-import com.ibm.academia.apirest.entities.Persona;
+import com.ibm.academia.apirest.models.entities.Carrera;
+import com.ibm.academia.apirest.models.entities.Persona;
 import com.ibm.academia.apirest.services.AlumnoDAO;
 import com.ibm.academia.apirest.services.CarreraDAO;
 import com.ibm.academia.apirest.services.PersonaDAO;
@@ -73,7 +73,7 @@ public class AlumnoController {
 	    Persona alumnoActualizado = ((AlumnoDAO)alumnoDAO).actualizar(oAlumno.get(), alumno);
 	    return new ResponseEntity<Persona>(alumnoActualizado, HttpStatus.OK);
 	  }
-	  	
+	  /*	
 	  @DeleteMapping("/alumnoId/{alumnoId}")
 	  public ResponseEntity<?> eliminarAlumno(@PathVariable Integer alumnoId){
 	    Optional<Persona> oAlumno = alumnoDAO.buscarPorId(alumnoId);
@@ -84,7 +84,7 @@ public class AlumnoController {
 	    alumnoDAO.eliminarPorId(oAlumno.get().getId()); 
 	    
 	    return new ResponseEntity<String>("Alumno ID: " + alumnoId + " se elimino satisfactoriamente",  HttpStatus.NO_CONTENT);
-	  }
+	  }*/
 	  	 
 	  @PutMapping("/alumnoId/{alumnoId}/carrera/{carreraId}")
 	  public ResponseEntity<?> asignarCarreraAlumno(@PathVariable Integer carreraId, @PathVariable Integer alumnoId) {

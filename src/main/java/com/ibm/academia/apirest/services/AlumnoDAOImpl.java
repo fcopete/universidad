@@ -1,14 +1,13 @@
 package com.ibm.academia.apirest.services;
 
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
-import com.ibm.academia.apirest.entities.Alumno;
-import com.ibm.academia.apirest.entities.Carrera;
-import com.ibm.academia.apirest.entities.Persona;
+import com.ibm.academia.apirest.models.entities.Alumno;
+import com.ibm.academia.apirest.models.entities.Carrera;
+import com.ibm.academia.apirest.models.entities.Persona;
 import com.ibm.academia.apirest.repositories.PersonaRepository;
 
 @Service
@@ -26,6 +25,8 @@ public class AlumnoDAOImpl extends PersonaDAOImpl  implements AlumnoDAO {
 		
 		return ((AlumnoDAO)repository).buscarAlumnoPorNombreCarrera(nombre);
 	}
+
+	
 
 
 

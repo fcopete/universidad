@@ -6,11 +6,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ibm.academia.apirest.enums.Pizarron;
-import com.ibm.academia.apirest.entities.Aula;
-import com.ibm.academia.apirest.entities.Carrera;
+import com.ibm.academia.apirest.models.entities.Aula;
+import com.ibm.academia.apirest.models.entities.Carrera;
 import com.ibm.academia.apirest.repositories.AulaRepository;
 
 @Service
+
 public class AulaDAOImpl extends GenericoDAOImpl<Aula, AulaRepository> implements AulaDAO {
 	
 	@Autowired
@@ -23,13 +24,13 @@ public class AulaDAOImpl extends GenericoDAOImpl<Aula, AulaRepository> implement
 		
 	}
 
-	@Override
+	/*@Override
 	@Transactional
-	public Iterable<Aula> buscarAulaPorTipoPizzarra(Pizarron pizarron) 
-	{
+	public Iterable<Aula> buscarAulaPorTipoPizzarra(Pizarron pizarron) {
 		
 		return aulaRepository.buscarAulaPorTipoPizzarra(pizarron);
-	}
+	}*/
+
 	
 	@Override
 	public Iterable<Aula> buscarAulasPorNombrePabellon(@Param("nombre") String nombre) {
