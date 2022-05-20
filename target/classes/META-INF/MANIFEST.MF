@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Build-Jdk-Spec: 17
-Implementation-Title: universidadesREST
-Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Title: UniversidadesREST1
+Implementation-Version: 1.0
 Created-By: Maven Integration for Eclipse
 
