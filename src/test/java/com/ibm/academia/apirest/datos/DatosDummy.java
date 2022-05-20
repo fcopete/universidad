@@ -16,96 +16,96 @@ import com.ibm.academia.apirest.models.entities.Profesor;
 public class DatosDummy {
 
 	public static Carrera carrera01() {
-		return new Carrera(null, "Ingenieria en Sistemas", 50, 5);
+		return new Carrera(null, "Ingenieria en Sistemas", 40, 4);
 	}
 
 	public static Carrera carrera02() {
-		return new Carrera(null, "Licenciatura en Sistemas", 45, 4);
+		return new Carrera(null, "Licenciatura en Contaduria", 38, 4);
 	}
 
 	public static Carrera carrera03() {
-		return new Carrera(null, "Ingenieria Industrial", 60, 5);
+		return new Carrera(null, "Ingenieria Aeronautica", 50, 5);
 	}
 
 	public static Persona empleado01() {
 
-		return new Empleado(null, "Fernando", "Lopez", "255501", new Direccion(), new BigDecimal("45285"),
+		return new Empleado(null, "Juan", "Hernandez", "456985", new Direccion(), new BigDecimal("6983"),
 				TipoEmpleado.ADMINISTRATIVO);
 	}
 
 	public static Persona empleado02() {
 
-		return new Empleado(null, "Armando", "Reyes", "255502", new Direccion(), new BigDecimal("7859"),
+		return new Empleado(null, "Alejandro", "Lopez", "44589", new Direccion(), new BigDecimal("9685"),
 				TipoEmpleado.ADMINISTRATIVO);
 	}
 
 	public static Persona empleado03() {
 
-		return new Empleado(null, "Jose", "Reyes", "255503", new Direccion(), new BigDecimal("48591"),
+		return new Empleado(null, "Daniel", "Cabrera", "66983", new Direccion(), new BigDecimal("3368"),
 				TipoEmpleado.MANTENIMIENTO);
 	}
 
 	public static Persona alumno01() {
 
-		return new Alumno(null, "Alberto", "Gomez", "323201", new Direccion());
+		return new Alumno(null, "Angelica", "MArtinez", "33698", new Direccion());
 	}
 
 	public static Persona alumno02() {
 
-		return new Alumno(null, "Maria", "Alvarado", "323202", new Direccion());
+		return new Alumno(null, "Ricardo", "Vargas", "369741", new Direccion());
 	}
 
 	public static Persona alumno03() {
 
-		return new Alumno(null, "Rosa", "Rosas", "323203", new Direccion());
+		return new Alumno(null, "Raul", "Gutierrez", "69854", new Direccion());
 	}
 
 	public static Persona profesor01() {
 
-		return new Profesor(null, "Roberto", "Rivas", "320101", new Direccion(), new BigDecimal("789512"));
+		return new Profesor(null, "Beatriz", "Castillo", "99658", new Direccion(), new BigDecimal("66985"));
 	}
 
 	public static Persona profesor02() {
 
-		return new Profesor(null, "Guadalupe", "Rivas", "320102", new Direccion(), new BigDecimal("14785"));
+		return new Profesor(null, "Laura", "Leon", "66654", new Direccion(), new BigDecimal("66657"));
 
 	}
 
 	public static Persona profesor03() {
 
-		return new Profesor(null, "Yazmin", "Alvarez", "320103", new Direccion(), new BigDecimal("326598"));
+		return new Profesor(null, "Ximena", "Lara", "44156", new Direccion(), new BigDecimal("665210"));
 	}
 
 	public static Aula aula01() {
 
-		return new Aula(null, 1, "125.5", 35, Pizarron.PIZARRA_BLANCA);
+		return new Aula(null, 1, "60.55", 22, Pizarron.PIZARRA_BLANCA);
 	}
 
 	public static Aula aula02() {
 
-		return new Aula(null, 1, "458", 25, Pizarron.PIZARRA_BLANCA);
+		return new Aula(null, 1, "120.0", 15, Pizarron.PIZARRA_BLANCA);
 	}
 
 	public static Aula aula03() {
 
-		return new Aula(null, 3, "253.6", 40, Pizarron.PIZARRA_TIZA);
+		return new Aula(null, 3, "240.96", 80, Pizarron.PIZARRA_TIZA);
 	}
 	
 	public static Pabellon pabellon01() {
 		
-		return new Pabellon(null, 145.5,"Compras", new Direccion());
+		return new Pabellon(null, 205.30,"Contabilidad", new Direccion());
 		
 	}
 	
 public static Pabellon pabellon02() {
 		
-		return new Pabellon(null, 185.6,"Compras", new Direccion());
+		return new Pabellon(null, 100.01,"Direccion", new Direccion());
 		
 	}
 
 public static Pabellon pabellon03() {
 	
-	return new Pabellon(null, 170.6,"Administracion", new Direccion());
+	return new Pabellon(null, 110.52,"Juridico", new Direccion());
 	
 }
 

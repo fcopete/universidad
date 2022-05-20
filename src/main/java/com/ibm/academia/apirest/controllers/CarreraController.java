@@ -1,6 +1,5 @@
 package com.ibm.academia.apirest.controllers;
 
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,11 +27,12 @@ import com.ibm.academia.apirest.models.dto.CarreraDTO;
 import com.ibm.academia.apirest.models.entities.Carrera;
 import com.ibm.academia.apirest.services.CarreraDAO;
 
+import javassist.NotFoundException;
+
 @RestController
 @RequestMapping("/carrera")
-public class CarreraController 
-{
-
+public class CarreraController {
+	
 	@Autowired
 	private CarreraDAO carreraDAO;
 	
@@ -46,7 +45,6 @@ public class CarreraController
 			throw new BadRequestException("No existen carreras");
 		return carreras;
 	}
-	
 	
 	@GetMapping("/id/{carreraId}")
 	public Carrera buscarCarreraPorId(@PathVariable Integer carreraId) {
@@ -78,41 +76,42 @@ public class CarreraController
 		
 	}
 	
-	@PutMapping("/upd/carreraId/{carreraId}")
+	 @PutMapping("/upd/carreraId/{carreraId}")
 	  public ResponseEntity<?> actualizarCarrera(@PathVariable Integer carreraId, @RequestBody Carrera carrera){
 		 
 	    Optional<Carrera> oCarrera = carreraDAO.buscarPorId(carreraId);
 	    
 	    if(!oCarrera.isPresent())
-	      throw new com.ibm.academia.apirest.exceptions.NotFoundException(String.format("La carrera con ID: %d no existe", carreraId));
+	      throw new com.ibm.academia.apirest.exceptions.handler.NotFoundException(String.format("La carrera con ID: %d no existe", carreraId));
 	    
 	    Carrera carreraActualizada = carreraDAO.actualizar(oCarrera.get(), carrera); 
 	    
 	    return new ResponseEntity<Carrera>(carreraActualizada, HttpStatus.OK); 
 	  }
-	
-	
-	@DeleteMapping("/carreraId/{carreraId}")
+	 
+	 
+	 @DeleteMapping("/carreraId/{carreraId}")
 	  public ResponseEntity<?> eliminarCarrera(@PathVariable Integer carreraId){
 	    Map<String, Object> respuesta = new HashMap<String, Object>();
 	    
 	    Optional<Carrera> carrera = carreraDAO.buscarPorId(carreraId);
 	    
 	    if(!carrera.isPresent())
-	      throw new com.ibm.academia.apirest.exceptions.NotFoundException(String.format("La carrera con ID: %d no existe", carreraId));
+	      throw new com.ibm.academia.apirest.exceptions.handler.NotFoundException(String.format("La carrera con ID: %d no existe", carreraId));
 	    
 	    carreraDAO.eliminarPorId(carreraId);
 	    respuesta.put("OK", "Carrera ID: " + carreraId + " eliminada exitosamente");
 	    return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.ACCEPTED);
 	  }
+	 
 	
-	@GetMapping("/carreras/dto")
+	 @GetMapping("/carreras/dto")
 	 public ResponseEntity<?> obtenerCarrerasDTO(){
 		 
 		 List<Carrera> carreras = (List<Carrera>) carreraDAO.buscarTodos();
 		 
 		 if(carreras.isEmpty())
-			 throw new com.ibm.academia.apirest.exceptions.NotFoundException("No existen carreras en la base de datos.");
+			 throw new com.ibm.academia.apirest.exceptions.handler.NotFoundException("No existen carreras en la base de datos.");
 		  
 		 List<CarreraDTO> listaCarreras = carreras
 				 .stream()
@@ -121,5 +120,5 @@ public class CarreraController
 		 
 		 return new ResponseEntity<List<CarreraDTO>>(listaCarreras, HttpStatus.OK);
 	 }
-	
+
 }

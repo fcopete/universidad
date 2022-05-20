@@ -52,8 +52,8 @@ public class ProfesorDAOImpl extends PersonaDAOImpl implements ProfesorDAO {
 		((Profesor)profesor).setCarreras((Set<Carrera>) carrera);
 		return repository.save(profesor);
 	}
-
+	
+}
 	
 
-		
-}
+

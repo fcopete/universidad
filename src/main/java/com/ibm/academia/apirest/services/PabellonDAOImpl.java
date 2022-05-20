@@ -20,13 +20,13 @@ public class PabellonDAOImpl extends GenericoDAOImpl<Pabellon, PabellonRepositor
 	
 	}
 
-	@Override
+	/*@Override
 	@Transactional
 	public Iterable<Pabellon> findPabellonesByLocalidad(String localidad) {
 		
 		return pabellonDAO.findPabellonesByLocalidad(localidad);
-	}
-	
+	}*/
+
 	@Override
 	@Transactional
 	public Iterable<Pabellon> findPabellonByNombre(String nombre) {
@@ -39,12 +39,13 @@ public class PabellonDAOImpl extends GenericoDAOImpl<Pabellon, PabellonRepositor
 			
 		Pabellon pabellonActualizado = null;
 		pabellonEncontrado.setNombre(pabellonEncontrado.getNombre());
-		pabellonEncontrado.setTamanioMetros(pabellonEncontrado.getTamanioMetros());
+		pabellonEncontrado.setMetrosCuadrados(pabellonEncontrado.getMetrosCuadrados());
 		pabellonEncontrado.setDireccion(pabellonEncontrado.getDireccion());
 		pabellonActualizado = repository.save(pabellonEncontrado);
 		return pabellonActualizado;
 		
 	}
 
-	
+
+
 }

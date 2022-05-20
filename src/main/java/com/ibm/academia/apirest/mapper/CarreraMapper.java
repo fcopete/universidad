@@ -10,7 +10,7 @@ public class CarreraMapper {
 		CarreraDTO carreraDTO = new CarreraDTO();
 		carreraDTO.setId(carrera.getId());
 		carreraDTO.setNombre(carrera.getNombre());
-		carreraDTO.setCantidadAnios(carrera.getCantidadAnios());
+		carreraDTO.setCantidadAnios(carreraDTO.getCantidadAnios());
 		carreraDTO.setCantidadMaterias(carrera.getCantidadMaterias());
 		return carreraDTO;
 		

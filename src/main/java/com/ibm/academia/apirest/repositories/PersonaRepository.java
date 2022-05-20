@@ -9,15 +9,13 @@ import org.springframework.data.repository.NoRepositoryBean;
 import com.ibm.academia.apirest.models.entities.Persona;
 
 @NoRepositoryBean
-public interface PersonaRepository extends CrudRepository<Persona, Integer> {
-
+public interface PersonaRepository extends CrudRepository<Persona, Integer>{
 	
 	@Query("select p from Persona p where p.nombre = ?1 and p.apellido = ?2")
 	public Optional<Persona> buscarPorNombreYApellido(String nombre, String apellido);
-	
 	@Query("select p from Persona p where p.dni = ?1")
-	public Optional<Persona> buscarPorDni(String dni);
-	
+	public Optional<Persona> buscarPorDni(Integer dni);
 	@Query("select p from Persona p where p.apellido like %?1%")
 	public Iterable<Persona> buscarPersonaPorApellido(String apellido);
+
 }

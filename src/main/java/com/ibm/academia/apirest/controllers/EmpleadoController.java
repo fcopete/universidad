@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.academia.apirest.enums.TipoEmpleado;
-import com.ibm.academia.apirest.exceptions.NotFoundException;
+import com.ibm.academia.apirest.exceptions.handler.NotFoundException;
 import com.ibm.academia.apirest.models.entities.Carrera;
 import com.ibm.academia.apirest.models.entities.Pabellon;
 import com.ibm.academia.apirest.models.entities.Persona;
@@ -37,14 +37,15 @@ public class EmpleadoController {
 	@Autowired
 	private PabellonDAO pabellonDAO;
 	
-	@PostMapping
+		  @PostMapping
 	  public ResponseEntity<?> crearEmpleado(@RequestBody Persona empleado){
 	    
 	    Persona empleadoGuardado = empleadoDAO.guardar(empleado);
 	    return new ResponseEntity<Persona>(empleadoGuardado, HttpStatus.CREATED);
 	  }
 	
-	 @GetMapping("/empleados/lista")
+	  
+	  @GetMapping("/empleados/lista")
 	  public ResponseEntity<?> obtenerTodos() {
 	    
 	    List<Persona> empleados = (List<Persona>) empleadoDAO.buscarTodos();
@@ -54,7 +55,8 @@ public class EmpleadoController {
 	    return new ResponseEntity<List<Persona>>(empleados, HttpStatus.OK);
 	  }
 	  
-	 @GetMapping("/empleadoId/{empleadoId}")
+	  
+	  @GetMapping("/empleadoId/{empleadoId}")
 	    public ResponseEntity<?> obtenerEmpleadoPorId(@PathVariable Integer empleadoId)
 	    {
 	        Optional<Persona> oEmpleado = empleadoDAO.buscarPorId(empleadoId);
@@ -65,7 +67,9 @@ public class EmpleadoController {
 	        return new ResponseEntity<Persona>(oEmpleado.get(), HttpStatus.OK);
 	    }
 	  
-	 @PutMapping("/upd/empleadoId/{empleadoId}")
+	  
+	  
+	  @PutMapping("/upd/empleadoId/{empleadoId}")
 	  public ResponseEntity<?> actualizarEmpleado(@PathVariable Integer empleadoId, @RequestBody Persona empleado) {
 	    Optional<Persona> oEmpleado = empleadoDAO.buscarPorId(empleadoId);
 	    
@@ -75,8 +79,9 @@ public class EmpleadoController {
 	    Persona empleadoActualizado = ((EmpleadoDAO)empleadoDAO).actualizar(oEmpleado.get(), empleado);
 	    return new ResponseEntity<Persona>(empleadoActualizado, HttpStatus.OK);
 	  }
-	  /*
-	 @DeleteMapping("/empleadoId/{empleadoId}")
+	  
+	  
+	  @DeleteMapping("/empleadoId/{empleadoId}")
 	  public ResponseEntity<?> eliminarEmpleado(@PathVariable Integer empleadoId){
 	    Optional<Persona> oEmpleado = empleadoDAO.buscarPorId(empleadoId);
 	    
@@ -86,7 +91,7 @@ public class EmpleadoController {
 	    empleadoDAO.eliminarPorId(oEmpleado.get().getId()); 
 	    
 	    return new ResponseEntity<String>("Alumno ID: " + empleadoId + " se elimino satisfactoriamente",  HttpStatus.NO_CONTENT);
-	  }*/
+	  }
 	  
 	  @PutMapping("/empleadoId/{empleadoId}/pabellon/{pabellonId}")
 	  public ResponseEntity<?> asignarPabellonEmpleado(@PathVariable Integer pabellonId, @PathVariable Integer empleadoId) {

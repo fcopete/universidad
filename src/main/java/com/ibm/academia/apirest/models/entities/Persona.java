@@ -21,8 +21,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,6 +35,7 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "personas", schema = "universidad")
+//@Table( name = "personas")
 @Inheritance(strategy = InheritanceType.JOINED)
 @JsonTypeInfo(
 		use = JsonTypeInfo.Id.NAME,
@@ -46,33 +47,33 @@ import lombok.ToString;
 	@JsonSubTypes.Type(value = Profesor.class, name = "profesor"),
 	@JsonSubTypes.Type(value = Empleado.class, name = "empleado")
 })
-
 public class Persona implements Serializable{
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotNull(message = "No puede ser vacio")
-	@NotEmpty(message = "No puede ser vacio")
+	
+	@NotNull(message = "Valor no puede ser vacio")
+	@NotEmpty(message = "Valor no puede ser vacio")
 	@Size(min = 1, max = 80)
 	@Column(name = "nombre")
 	private String nombre;
 	
-	@NotNull(message = "No puede ser vacio")
-	@NotEmpty(message = "No puede ser vacio")
+	@NotNull(message = "Valor no puede ser vacio")
+	@NotEmpty(message = "Valor no puede ser vacio")
 	@Size(min = 1, max = 80)
 	@Column(name = "apellido")
 	private String apellido;
 	
-	@NotNull(message = "No puede ser vacio")
-	@NotEmpty(message = "No puede ser vacio")
+	@NotNull(message = "Valor no puede ser vacio")
+	@NotEmpty(message = "Valor no puede ser vacio")
 	@Size(min = 3, max = 30)
 	@Column(name = "dni", unique = true)
 	private String dni;
 	
 	@Column(name = "fecha_alta")
-	private Date fechaCreacion;
+	private Date fechaAlta;
 	
 	@Column(name = "fecha_actualizacion")
 	private Date fechaModificacion;
@@ -82,10 +83,10 @@ public class Persona implements Serializable{
 		@AttributeOverride(name = "codigoPostal", column = @Column(name = "codigo_postal")),
 		@AttributeOverride(name = "departamento", column = @Column(name = "departamento")),
 	})
-	
 	private Direccion direccion;
 	
 	public Persona(Integer id, String nombre, String apellido, String dni, Direccion direccion) {
+	
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -93,6 +94,7 @@ public class Persona implements Serializable{
 		this.direccion = direccion;
 	}
 	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(dni, id);
@@ -110,79 +112,18 @@ public class Persona implements Serializable{
 		Persona other = (Persona) obj;
 		return Objects.equals(dni, other.dni) && Objects.equals(id, other.id);
 	}
-
 	@PrePersist
 	private void antesPersistir() {
-		this.fechaCreacion = new Date(); 
+		
+		this.fechaAlta = new Date();
 	}
 	
 	@PreUpdate
 	private void antesActualizar() {
-		this.fechaModificacion = new Date(); 
+		
+		this.fechaModificacion = new Date();
 	}
+
+	private static final long serialVersionUID = -7239034881674082501L;
 	
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getApellido() {
-		return apellido;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-	public String getDni() {
-		return dni;
-	}
-
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
-
-	public Date getFechaCreacion() {
-		return fechaCreacion;
-	}
-
-	public void setFechaCreacion(Date fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
-	}
-
-	public Date getFechaModificacion() {
-		return fechaModificacion;
-	}
-
-	public void setFechaModificacion(Date fechaModificacion) {
-		this.fechaModificacion = fechaModificacion;
-	}
-
-	public Direccion getDireccion() {
-		return direccion;
-	}
-
-	public void setDireccion(Direccion direccion) {
-		this.direccion = direccion;
-	}
-
-
-
-
-	private static final long serialVersionUID = 7435045832876635940L;
-
-	
-	
-
 }

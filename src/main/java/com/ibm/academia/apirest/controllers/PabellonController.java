@@ -32,7 +32,8 @@ import com.ibm.academia.apirest.services.PabellonDAO;
 public class PabellonController {
 	
 	@Autowired
-private PabellonDAO pabellonDAO;
+	private PabellonDAO pabellonDAO;
+	
 	
 	@GetMapping("/lista/pabellones")
 	public List<Pabellon> buscarTodas(){
@@ -43,7 +44,8 @@ private PabellonDAO pabellonDAO;
 			throw new BadRequestException("No existen pabellones");
 		return pabellones;
 	}
-		
+	
+	
 	@GetMapping("/id/{pabellonId}")
 	public Pabellon buscarPabellonPorId(@PathVariable Integer pabellonId) {
 		
@@ -80,7 +82,7 @@ private PabellonDAO pabellonDAO;
 	    Optional<Pabellon> oPabellon = pabellonDAO.buscarPorId(pabellonId);
 	    
 	    if(!oPabellon.isPresent())
-	      throw new com.ibm.academia.apirest.exceptions.NotFoundException(String.format("El pabellon con ID: %d no existe", pabellonId));
+	      throw new com.ibm.academia.apirest.exceptions.handler.NotFoundException(String.format("El pabellon con ID: %d no existe", pabellonId));
 	    
 	    Pabellon pabellonActualizado = pabellonDAO.actualizar(oPabellon.get(), pabellon); 
 	    
@@ -94,7 +96,7 @@ private PabellonDAO pabellonDAO;
 	    Optional<Pabellon> pabellones = pabellonDAO.buscarPorId(pabellonId);
 	    
 	    if(!pabellones.isPresent())
-	      throw new com.ibm.academia.apirest.exceptions.NotFoundException(String.format("El pabellon con ID: %d no existe", pabellonId));
+	      throw new com.ibm.academia.apirest.exceptions.handler.NotFoundException(String.format("El pabellon con ID: %d no existe", pabellonId));
 	    
 	    pabellonDAO.eliminarPorId(pabellonId);
 	    respuesta.put("OK", "Pabellon ID: " + pabellonId + " eliminado exitosamente");
@@ -111,5 +113,6 @@ private PabellonDAO pabellonDAO;
 			
 		return pabellones;
 	}
+	 
 
 }

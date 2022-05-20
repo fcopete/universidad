@@ -6,14 +6,13 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 public class GenericoDAOImpl <E, R extends CrudRepository<E, Integer>> implements GenericoDAO<E> {
-
 	
 	protected final R repository;
 	
 	public GenericoDAOImpl(R repository) {
 		this.repository = repository;
 	}
-	
+
 	@Override
 	@Transactional(readOnly = true)
 	public Optional<E> buscarPorId(Integer id) {

@@ -33,6 +33,7 @@ public class AulaController {
 	@Autowired
 	private AulaDAO aulaDAO;
 	
+		
 	@GetMapping("/lista/aulas")
 	public List<Aula> buscarTodas(){
 		
@@ -43,7 +44,7 @@ public class AulaController {
 		return aulas;
 	}
 	
-	
+		
 	@GetMapping("/id/{aulaId}")
 	public Aula buscarAulaPorId(@PathVariable Integer aulaId) {
 		
@@ -54,7 +55,7 @@ public class AulaController {
 		return oAula.get();
 	}
 	
-	@PostMapping
+		@PostMapping
 	public ResponseEntity<?> guardarAula(@Valid @RequestBody Aula aula, BindingResult result){
 		
 		Map<String, Object> validaciones = new HashMap<String, Object>();
@@ -74,13 +75,14 @@ public class AulaController {
 		
 	}
 	
+	
 	@PutMapping("/upd/aulaId/{aulaId}")
 	  public ResponseEntity<?> actualizarAula(@PathVariable Integer aulaId, @RequestBody Aula aula){
 		 
 	    Optional<Aula> oAula = aulaDAO.buscarPorId(aulaId);
 	    
 	    if(!oAula.isPresent())
-	      throw new com.ibm.academia.apirest.exceptions.NotFoundException(String.format("El aula con ID: %d no existe", aulaId));
+	      throw new com.ibm.academia.apirest.exceptions.handler.NotFoundException(String.format("El aula con ID: %d no existe", aulaId));
 	    
 	    Aula aulaActualizada = aulaDAO.actualizar(oAula.get(), aula); 
 	    
@@ -94,7 +96,7 @@ public class AulaController {
 	    Optional<Aula> aula = aulaDAO.buscarPorId(aulaId);
 	    
 	    if(!aula.isPresent())
-	      throw new com.ibm.academia.apirest.exceptions.NotFoundException(String.format("El aula con ID: %d no existe", aulaId));
+	      throw new com.ibm.academia.apirest.exceptions.handler.NotFoundException(String.format("El aula con ID: %d no existe", aulaId));
 	    
 	    aulaDAO.eliminarPorId(aulaId);
 	    respuesta.put("OK", "Aula ID: " + aulaId + " eliminada exitosamente");

@@ -11,7 +11,6 @@ import com.ibm.academia.apirest.models.entities.Carrera;
 import com.ibm.academia.apirest.repositories.AulaRepository;
 
 @Service
-
 public class AulaDAOImpl extends GenericoDAOImpl<Aula, AulaRepository> implements AulaDAO {
 	
 	@Autowired

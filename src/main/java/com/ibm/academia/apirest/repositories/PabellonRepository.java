@@ -12,7 +12,7 @@ public interface PabellonRepository extends CrudRepository<Pabellon, Integer> {
 	//@Query("select p from Pabellon p where p.(Direccion.localidad) = ?1")
 	//public Iterable<Pabellon> findPabellonesByLocalidad(String localidad);
 	
-	//@Query("select p from Pabellon p where p.nombre = ?1")
-	//public Iterable<Pabellon> findPabellonByNombre(String nombre);
+	@Query("select p from Pabellon p where p.nombre = ?1")
+	public Iterable<Pabellon> findPabellonByNombre(String nombre);
 
 }

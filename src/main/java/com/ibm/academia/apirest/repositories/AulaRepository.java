@@ -5,6 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.ibm.academia.apirest.enums.Pizarron;
 import com.ibm.academia.apirest.models.entities.Aula;
 
 @Repository

@@ -2,16 +2,19 @@ package com.ibm.academia.apirest.services;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ibm.academia.apirest.models.entities.Persona;
 import com.ibm.academia.apirest.repositories.PersonaRepository;
 
 public class PersonaDAOImpl extends GenericoDAOImpl<Persona, PersonaRepository> implements PersonaDAO {
-
+	
+	@Autowired
 	public PersonaDAOImpl(PersonaRepository repository) {
 		super(repository);
-		}
+	
+	}
 
 	@Override
 	@Transactional(readOnly = true)
@@ -22,7 +25,7 @@ public class PersonaDAOImpl extends GenericoDAOImpl<Persona, PersonaRepository> 
 
 	@Override
 	@Transactional(readOnly = true)
-	public Optional<Persona> buscarPorDni(String dni) {
+	public Optional<Persona> buscarPorDni(Integer dni) {
 		
 		return repository.buscarPorDni(dni);
 	}
@@ -30,8 +33,11 @@ public class PersonaDAOImpl extends GenericoDAOImpl<Persona, PersonaRepository> 
 	@Override
 	@Transactional(readOnly = true)
 	public Iterable<Persona> buscarPersonaPorApellido(String apellido) {
-		
+
 		return (Iterable<Persona>) repository.buscarPersonaPorApellido(apellido);
 	}
 
-}
+
+	}
+
+
